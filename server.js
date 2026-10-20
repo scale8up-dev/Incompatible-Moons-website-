@@ -19,7 +19,6 @@ if (!fs.existsSync(MESSAGES_FILE)) {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(__dirname));
 
 // Simple Email Validation Regex
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -91,7 +90,7 @@ app.post('/api/contact', (req, res) => {
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'online',
-    system: 'Incompatible Moons Core',
+    system: 'Incompatible Moons LLC Core',
     timestamp: new Date().toISOString()
   });
 });
@@ -102,7 +101,7 @@ app.use((req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`\n🌕 Incompatible Moons Server running!`);
+  console.log(`\n🌕 Incompatible Moons LLC Server running!`);
   console.log(`📡 Local URL: http://localhost:${PORT}`);
   console.log(`📩 Transmissions saved to: ${MESSAGES_FILE}\n`);
 });

@@ -1,7 +1,7 @@
 {
   "name": "incompatible-moons",
   "version": "1.0.0",
-  "description": "Incompatible Moons - Landing page & contact portal",
+  "description": "Incompatible Moons LLC - Landing page & contact portal",
   "main": "server.js",
   "type": "commonjs",
   "scripts": {
@@ -12,9 +12,10 @@
     "landing-page",
     "contact-form",
     "incompatible-moons",
+    "incompatible-moons-llc",
     "creative-studio"
   ],
-  "author": "Incompatible Moons",
+  "author": "Incompatible Moons LLC",
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.2"

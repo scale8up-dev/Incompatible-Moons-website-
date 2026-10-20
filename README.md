@@ -1,7 +1,7 @@
-# Incompatible Moons 🌕🌖
+# Incompatible Moons LLC 🌕🌖
 
 > **Where opposing orbits spark luminous realities.**  
-> A bespoke landing page and contact transmission portal for **Incompatible Moons**, a boutique creative studio and digital atelier.
+> A bespoke landing page and contact transmission portal for **Incompatible Moons LLC**, a boutique creative studio and digital atelier.
 
 ---
 
@@ -66,26 +66,7 @@ incompatible-moons/
 
 ---
 
-### Option 2: Host via GitHub Pages (Free Worldwide Hosting)
-
-The repository is configured for immediate deployment via GitHub Pages:
-
-1. Go to your repository on GitHub:
-   `https://github.com/scale8up-dev/Incompatible-Moons-website-/settings/pages`
-2. Under **Build and deployment > Source**:
-   - Choose **GitHub Actions** (it will automatically use the included `.github/workflows/deploy.yml` workflow), OR
-   - Choose **Deploy from a branch** > branch: `master` > folder: `/ (root)` > Click **Save**.
-3. Your site will be published at:
-   ```
-   https://scale8up-dev.github.io/Incompatible-Moons-website-/
-   ```
-
-> 💡 **Form Submissions on GitHub Pages**:  
-> To receive emails from the contact form when hosted on GitHub Pages, get a free endpoint from [Formspree](https://formspree.io) or [Web3Forms](https://web3forms.com) and paste it into `STATIC_FORM_ENDPOINT` at the top of `js/main.js`. If left unconfigured, transmissions are securely captured in the user's browser `localStorage`.
-
----
-
-### Option 3: Open Directly (Zero Server Mode)
+### Option 2: Open Directly (Zero Server Mode)
 
 You can also double-click or open `public/index.html` directly in any web browser (`file:///...`). The contact form will automatically detect offline mode and store transmissions safely in your browser's `localStorage`.
 
@@ -116,4 +97,4 @@ Returns the operational status of the server core.
 ---
 
 ## 🪐 License
-© 2026 Incompatible Moons. Crafted with precision and vision.
+© 2026 Incompatible Moons LLC. Crafted with precision and vision.
