@@ -1,0 +1,22 @@
+{
+  "name": "incompatible-moons",
+  "version": "1.0.0",
+  "description": "Incompatible Moons - Landing page & contact portal",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "landing-page",
+    "contact-form",
+    "incompatible-moons",
+    "creative-studio"
+  ],
+  "author": "Incompatible Moons",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
