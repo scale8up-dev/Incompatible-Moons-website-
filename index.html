@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incompatible Moons — Creative Studio & Digital Atelier</title>
+  <meta name="description" content="Where opposing orbits spark luminous realities. Incompatible Moons is a boutique creative studio crafting distinct digital experiences and visionary brand identities.">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%238b5cf6'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='12' cy='16' r='10' fill='%238b5cf6' opacity='0.85'/%3E%3Ccircle cx='20' cy='16' r='9' fill='%2306b6d4' opacity='0.75' style='mix-blend-mode:screen'/%3E%3C/svg%3E">
+
+  <!-- Google Fonts: Space Grotesk & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Ambient Cosmic Canvas -->
+  <canvas id="cosmic-canvas" aria-hidden="true"></canvas>
+
+  <!-- Ambient Glow Blobs -->
+  <div class="ambient-glow glow-violet" aria-hidden="true"></div>
+  <div class="ambient-glow glow-cyan" aria-hidden="true"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo" aria-label="Incompatible Moons Home">
+        <span class="logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="16" cy="20" r="12" fill="url(#violet-grad)" opacity="0.9"/>
+            <circle cx="24" cy="20" r="11" fill="url(#cyan-grad)" opacity="0.75" style="mix-blend-mode: screen;"/>
+            <path d="M16 8C20 13 20 27 16 32" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <defs>
+              <linearGradient id="violet-grad" x1="4" y1="8" x2="28" y2="32" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#a855f7"/>
+                <stop offset="1" stop-color="#6366f1"/>
+              </linearGradient>
+              <linearGradient id="cyan-grad" x1="13" y1="9" x2="35" y2="31" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#38bdf8"/>
+                <stop offset="1" stop-color="#06b6d4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="brand-text">INCOMPATIBLE <span>MOONS</span></span>
+      </a>
+
+      <nav class="nav-links" id="nav-links" aria-label="Main Navigation">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#services" class="nav-link">Capabilities</a>
+        <a href="#philosophy" class="nav-link">Philosophy</a>
+        <a href="#contact" class="nav-cta-btn">
+          <span>Establish Contact</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+      </nav>
+
+      <button class="mobile-menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="badge-pill">
+          <span class="pulse-dot"></span>
+          <span>Dual-Orbit Digital Atelier & Creative Lab</span>
+        </div>
+
+        <h1 class="hero-title">
+          Where Opposing Orbits Spark <span class="gradient-text">Luminous Realities.</span>
+        </h1>
+
+        <p class="hero-description">
+          We bring together contrasting forces—avant-garde aesthetics and ruthless engineering, poetic vision and high-velocity code. At the intersection of incompatible ideas lies the extraordinary.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">
+            <span>Transmit Signal</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#services" class="btn btn-secondary">
+            <span>Explore Services</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+          </a>
+        </div>
+
+        <!-- Metrics Strip -->
+        <div class="metrics-strip">
+          <div class="metric-item">
+            <span class="metric-val">100%</span>
+            <span class="metric-label">Bespoke Architecture</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-val">2.4×</span>
+            <span class="metric-label">Avg Engagement Lift</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-val">0</span>
+            <span class="metric-label">Off-the-shelf Templates</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section: The Duality -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Cosmic Architecture</span>
+          <h2 class="section-title">The Paradox of Two Moons</h2>
+          <p class="section-subtitle">
+            Most projects choose between raw functionality or striking art. We reject the trade-off.
+          </p>
+        </div>
+
+        <div class="duality-grid">
+          <!-- Moon 1 Card -->
+          <div class="duality-card card-violet">
+            <div class="card-glow"></div>
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </div>
+            <span class="orbit-badge">Orbit Alpha</span>
+            <h3 class="card-title">Visionary Expression</h3>
+            <p class="card-text">
+              Provocative storytelling, distinctive typography, and immersive design languages that command attention and refuse to be forgotten.
+            </p>
+            <ul class="feature-bullets">
+              <li>Distinctive Visual Identity Systems</li>
+              <li>Atmospheric UI & Spatial Micro-interactions</li>
+              <li>Compelling Narrative Strategy</li>
+            </ul>
+          </div>
+
+          <!-- Gravitational Spark Centerpiece -->
+          <div class="duality-nexus">
+            <div class="nexus-ring"></div>
+            <div class="nexus-core">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+            <span class="nexus-caption">Gravitational Synthesis</span>
+          </div>
+
+          <!-- Moon 2 Card -->
+          <div class="duality-card card-cyan">
+            <div class="card-glow"></div>
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <span class="orbit-badge">Orbit Beta</span>
+            <h3 class="card-title">Precision Engineering</h3>
+            <p class="card-text">
+              Clean, resilient architectures, blazing load times, and fluid 60fps animations engineered to run flawlessly across every viewport.
+            </p>
+            <ul class="feature-bullets">
+              <li>Modern High-Performance Web Stacks</li>
+              <li>Accessible, Semantic & Scalable Markup</li>
+              <li>Resilient Full-Stack Integrations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Core Disciplines</span>
+          <h2 class="section-title">What We Launch Into Orbit</h2>
+          <p class="section-subtitle">
+            End-to-end capabilities designed to take your brand from faint murmur to unignorable beacon.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-number">01</div>
+            <h3 class="service-name">Flagship Web Platforms</h3>
+            <p class="service-desc">
+              Custom landing pages and interactive web platforms designed to captivate your audience and convert curiosity into enduring loyalty.
+            </p>
+            <div class="service-tags">
+              <span>Interactive UI</span>
+              <span>Conversion Flow</span>
+              <span>Responsive</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-number">02</div>
+            <h3 class="service-name">Cosmic Brand Systems</h3>
+            <p class="service-desc">
+              Logomarks, design tokens, typography, and motion guidelines tailored for companies forging their own distinct category.
+            </p>
+            <div class="service-tags">
+              <span>Brand Identity</span>
+              <span>Design Systems</span>
+              <span>Typography</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-number">03</div>
+            <h3 class="service-name">Creative Tech & Motion</h3>
+            <p class="service-desc">
+              Generative visualizers, Canvas/WebGL experiences, and bespoke interactive components that elevate standard interfaces into art.
+            </p>
+            <div class="service-tags">
+              <span>Canvas & WebGL</span>
+              <span>Micro-animations</span>
+              <span>Experimental</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-number">04</div>
+            <h3 class="service-name">Engineering & Architecture</h3>
+            <p class="service-desc">
+              Robust API layers, rapid backend integrations, SEO optimization, and infrastructure built for speed, durability, and security.
+            </p>
+            <div class="service-tags">
+              <span>APIs & Nodes</span>
+              <span>Core Web Vitals</span>
+              <span>Security</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy / Quote Section -->
+    <section class="philosophy-section" id="philosophy">
+      <div class="container philosophy-container">
+        <div class="quote-badge">Studio Manifest</div>
+        <blockquote class="manifesto-quote">
+          “When two celestial bodies follow conflicting orbits, they do not apologize for their gravity. They bend light, stir tides, and illuminate horizons that single stars could never reveal.”
+        </blockquote>
+        <div class="manifesto-author">
+          <div class="author-avatar">
+            <div class="mini-moon moon-violet"></div>
+            <div class="mini-moon moon-cyan"></div>
+          </div>
+          <div class="author-info">
+            <strong>The Collective</strong>
+            <span>Incompatible Moons Atelier</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-wrapper">
+          <!-- Left Column: Transmissions Info -->
+          <div class="contact-info">
+            <div class="status-banner">
+              <span class="status-indicator"></span>
+              <span>Subspace Frequency Active</span>
+            </div>
+
+            <h2 class="contact-heading">
+              Ready to Align <span class="gradient-text">Your Orbit?</span>
+            </h2>
+
+            <p class="contact-subheading">
+              Tell us about your venture, product, or paradox. Whether you're building from scratch or redesigning an existing world, we'd love to collaborate.
+            </p>
+
+            <div class="contact-meta">
+              <div class="meta-item">
+                <div class="meta-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div>
+                  <span class="meta-label">Direct Channel</span>
+                  <a href="mailto:orbit@incompatiblemoons.com" class="meta-value">orbit@incompatiblemoons.com</a>
+                </div>
+              </div>
+
+              <div class="meta-item">
+                <div class="meta-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                  <span class="meta-label">Response Velocity</span>
+                  <span class="meta-value">Within 24 Solar Hours</span>
+                </div>
+              </div>
+
+              <div class="meta-item">
+                <div class="meta-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <span class="meta-label">Coordinates</span>
+                  <span class="meta-value">Worldwide • Remote Planetary Node</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="transmission-guarantee">
+              <div class="guarantee-icon">✦</div>
+              <p>Every message is personally reviewed by our lead partners. No algorithmic auto-dismissal.</p>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Form -->
+          <div class="contact-form-container">
+            <form id="contact-form" class="contact-form" novalidate>
+              <h3 class="form-title">Initialize Transmission</h3>
+              <p class="form-desc">Fill out the coordinates below to reach our team.</p>
+
+              <!-- Name Field -->
+              <div class="form-group" id="group-name">
+                <label for="name" class="form-label">Your Name / Title <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    class="form-input" 
+                    placeholder="e.g. Elena Rostova"
+                    required 
+                    autocomplete="name"
+                  >
+                  <span class="validation-icon" aria-hidden="true"></span>
+                </div>
+                <span class="error-msg" id="name-error"></span>
+              </div>
+
+              <!-- Email Field -->
+              <div class="form-group" id="group-email">
+                <label for="email" class="form-label">Frequency (Email) <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    class="form-input" 
+                    placeholder="elena@constellation.io"
+                    required 
+                    autocomplete="email"
+                  >
+                  <span class="validation-icon" aria-hidden="true"></span>
+                </div>
+                <span class="error-msg" id="email-error"></span>
+              </div>
+
+              <!-- Subject / Orbit Discipline Dropdown -->
+              <div class="form-group" id="group-subject">
+                <label for="subject" class="form-label">Mission Scope</label>
+                <div class="select-wrapper">
+                  <select id="subject" name="subject" class="form-select">
+                    <option value="New Flagship Website">New Flagship Website</option>
+                    <option value="Brand Identity & Design System">Brand Identity & Design System</option>
+                    <option value="Interactive Experience / WebGL">Interactive Experience / WebGL</option>
+                    <option value="Full Creative & Tech Partnership">Full Creative & Tech Partnership</option>
+                    <option value="General Inquiry / Hello">General Inquiry / Hello</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Budget Range Selection -->
+              <div class="form-group" id="group-budget">
+                <label class="form-label">Estimated Investment</label>
+                <div class="budget-pills" role="radiogroup" aria-label="Budget range">
+                  <label class="budget-pill">
+                    <input type="radio" name="budget" value="< $5k">
+                    <span>&lt; $5k</span>
+                  </label>
+                  <label class="budget-pill">
+                    <input type="radio" name="budget" value="$5k - $15k" checked>
+                    <span>$5k – $15k</span>
+                  </label>
+                  <label class="budget-pill">
+                    <input type="radio" name="budget" value="$15k - $30k">
+                    <span>$15k – $30k</span>
+                  </label>
+                  <label class="budget-pill">
+                    <input type="radio" name="budget" value="$30k+">
+                    <span>$30k+</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Message Field -->
+              <div class="form-group" id="group-message">
+                <div class="label-with-counter">
+                  <label for="message" class="form-label">Transmission Brief <span class="required">*</span></label>
+                  <span class="char-counter" id="char-counter">0 / 1000</span>
+                </div>
+                <div class="input-wrapper">
+                  <textarea 
+                    id="message" 
+                    name="message" 
+                    class="form-textarea" 
+                    rows="4" 
+                    placeholder="Briefly describe your goals, timeline, or the vision you want to bring into reality..."
+                    required
+                    maxlength="1000"
+                  ></textarea>
+                </div>
+                <span class="error-msg" id="message-error"></span>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" id="submit-btn" class="submit-btn">
+                <span class="btn-text">Transmit Signal</span>
+                <span class="btn-spinner" aria-hidden="true"></span>
+                <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+
+              <!-- Form Status Alert Box -->
+              <div id="form-feedback" class="form-feedback" role="alert" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="#hero" class="brand-logo">
+          <span class="brand-text">INCOMPATIBLE <span>MOONS</span></span>
+        </a>
+        <p class="footer-tagline">
+          Navigating divergent orbits to build digital monuments.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <span class="footer-col-title">Navigation</span>
+          <a href="#about">About</a>
+          <a href="#services">Capabilities</a>
+          <a href="#philosophy">Manifesto</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Frequencies</span>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer">Dribbble</a>
+          <a href="https://x.com" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Incompatible Moons. All gravitational rights reserved.</p>
+        <button id="back-to-top" class="back-to-top" aria-label="Return to top">
+          <span>Back to Orbit</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/canvas.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

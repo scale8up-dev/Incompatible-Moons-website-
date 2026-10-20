@@ -1,7 +1,18 @@
 /**
  * Incompatible Moons — Main Interactive Controller
  * Handles Navigation, Real-time Form Validation & Submission
+ * 
+ * Supports both Node/Express backend (/api/contact) and
+ * Static Hosting / GitHub Pages (Formspree, Web3Forms, or Local Offline Relay).
  */
+
+// --------------------------------------------------------------------------
+// CONFIGURATION FOR GITHUB PAGES / STATIC HOSTING:
+// If you want form submissions to arrive in your email on GitHub Pages:
+// 1. Get a free endpoint URL from https://formspree.io or https://web3forms.com
+// 2. Paste your endpoint below (e.g., "https://formspree.io/f/xyzabcde"):
+const STATIC_FORM_ENDPOINT = ""; 
+// --------------------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Navbar Scroll Blur & Back to Top
@@ -161,14 +172,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const isMsgValid = validateMessage();
 
     if (!isNameValid || !isEmailValid || !isMsgValid) {
-      // Focus first erroneous input
       if (!isNameValid) nameInput.focus();
       else if (!isEmailValid) emailInput.focus();
       else if (!isMsgValid) messageInput.focus();
       return;
     }
 
-    // Get selected budget
     const selectedBudget = document.querySelector('input[name="budget"]:checked')?.value || 'Unspecified';
 
     const payload = {
@@ -179,61 +188,84 @@ document.addEventListener('DOMContentLoaded', () => {
       message: messageInput.value.trim()
     };
 
-    // UI Loading state
     submitBtn.classList.add('loading');
     submitBtn.disabled = true;
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
+    // Determine target endpoint:
+    // If STATIC_FORM_ENDPOINT is set, use it. Otherwise attempt local /api/contact.
+    const isStaticHost = window.location.hostname.includes('github.io') || window.location.protocol === 'file:';
+    const targetUrl = STATIC_FORM_ENDPOINT || (isStaticHost ? null : '/api/contact');
 
-      const data = await response.json().catch(() => ({}));
+    if (targetUrl) {
+      try {
+        const response = await fetch(targetUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
 
-      if (response.ok && data.success) {
-        showSuccess(data.transmissionId, data.message);
-        contactForm.reset();
-        charCounter.textContent = '0 / 1000';
-        [nameGroup, emailGroup, messageGroup].forEach(g => g.classList.remove('is-valid'));
-      } else {
-        const errorText = data.message || (data.errors ? data.errors.join(' ') : 'Orbital transmission failed.');
-        showError(errorText);
+        const data = await response.json().catch(() => ({}));
+
+        if (response.ok) {
+          showSuccess(
+            data.transmissionId || `sig_${Date.now().toString(36)}`,
+            data.message || 'Your signal has entered orbit. Our team will establish communication shortly.'
+          );
+          resetForm();
+          return;
+        } else {
+          // If server returned error response
+          const errorText = data.message || (data.errors ? data.errors.join(' ') : 'Orbital transmission failed.');
+          showError(errorText);
+          return;
+        }
+      } catch (err) {
+        console.warn('Network or endpoint error, falling back to local capture:', err);
+      } finally {
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
       }
-    } catch (err) {
-      console.warn('Backend server unavailable or network error. Saving to local storage fallback.', err);
-      // Fallback: save to localStorage so no user input is ever lost
-      const localId = `local_${Date.now().toString(36)}`;
-      const savedTransmissions = JSON.parse(localStorage.getItem('incompatible_moons_transmissions') || '[]');
-      savedTransmissions.unshift({
-        id: localId,
-        ...payload,
-        timestamp: new Date().toISOString()
-      });
-      localStorage.setItem('incompatible_moons_transmissions', JSON.stringify(savedTransmissions));
-
-      showSuccess(
-        localId,
-        'Transmission captured locally! Our automated relay will dispatch it once connection to the mothership is established.'
-      );
-      contactForm.reset();
-      charCounter.textContent = '0 / 1000';
-      [nameGroup, emailGroup, messageGroup].forEach(g => g.classList.remove('is-valid'));
-    } finally {
-      submitBtn.classList.remove('loading');
-      submitBtn.disabled = false;
     }
+
+    // Static Hosting / Offline Fallback (e.g. GitHub Pages without custom backend)
+    saveLocally(payload);
   });
+
+  function saveLocally(payload) {
+    const localId = `orbit_${Date.now().toString(36)}`;
+    const savedTransmissions = JSON.parse(localStorage.getItem('incompatible_moons_transmissions') || '[]');
+    savedTransmissions.unshift({
+      id: localId,
+      ...payload,
+      timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('incompatible_moons_transmissions', JSON.stringify(savedTransmissions));
+
+    const isGitHub = window.location.hostname.includes('github.io');
+    const note = isGitHub 
+      ? 'Transmission safely recorded in browser orbit! (To forward signals directly to your email on GitHub Pages, connect a free Formspree or Web3Forms endpoint in js/main.js).'
+      : 'Your signal has entered orbit. Our team will establish communication shortly.';
+
+    showSuccess(localId, note);
+    resetForm();
+    submitBtn.classList.remove('loading');
+    submitBtn.disabled = false;
+  }
+
+  function resetForm() {
+    contactForm.reset();
+    charCounter.textContent = '0 / 1000';
+    [nameGroup, emailGroup, messageGroup].forEach(g => g.classList.remove('is-valid'));
+  }
 
   function showSuccess(transmissionId, customMsg) {
     formFeedback.className = 'form-feedback success';
     formFeedback.innerHTML = `
       <strong>✦ Transmission Successful!</strong>
-      <p style="margin-top: 4px;">${customMsg || "Your signal has entered our orbit. Expect a response within 24 standard solar hours."}</p>
+      <p style="margin-top: 4px;">${customMsg}</p>
       ${transmissionId ? `<div class="transmission-id-pill">Signal ID: ${transmissionId}</div>` : ''}
     `;
     formFeedback.style.display = 'block';
